@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ruth Portfolio - Cybersecurity & Web Developer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={theme:{extend:{fontFamily:{display:['Bricolage Grotesque','sans-serif'],body:['Instrument Sans','sans-serif']}}}}
+</script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0;background:#060609;color:#e8e8f0;font-family:'Instrument Sans',sans-serif;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grid-bg{background-image:linear-gradient(rgba(16,185,129,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.04) 1px,transparent 1px);background-size:60px 60px}
+.text-em{color:#34d399}
+.glow-sm{box-shadow:0 0 20px rgba(16,185,129,0.22)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l.visible{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-r.visible{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.cursor{display:inline-block;width:3px;height:.9em;background:#34d399;margin-left:2px;vertical-align:middle;animation:blink .9s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#34d399;transition:width .3s}
+.nav-link:hover::after,.nav-link.active::after{width:100%}
+.skill-bar-bg{height:3px;background:rgba(255,255,255,0.07);border-radius:99px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,#34d399,#059669);border-radius:99px;width:0;transition:width 1.2s ease}
+.pcard{transition:transform .35s ease,box-shadow .35s ease}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(16,185,129,0.11)}
+/* ── img-slot: NO cursor, NOT clickable ── */
+.img-slot{position:relative;overflow:hidden;background:#12121c;border:1.5px solid rgba(52,211,153,0.18)}
+.img-slot img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pcard:hover .img-slot img{transform:scale(1.04)}
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(52,211,153,0.1);color:#34d399;border:1px solid rgba(52,211,153,0.2)}
+.sec-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#34d399;font-weight:600}
+.cinput{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;font-size:14px;color:#e8e8f0;font-family:'Instrument Sans',sans-serif;outline:none;transition:border-color .3s}
+.cinput:focus{border-color:#34d399}
+.cinput::placeholder{color:rgba(255,255,255,0.22)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)}
+#mob-menu{max-height:0;overflow:hidden;transition:max-height .4s ease}
+#mob-menu.open{max-height:420px}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.1) 50%,transparent 60%);transform:translateX(-100%);animation:shimmer 2.8s ease infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}50%{transform:translateX(100%)}}
+#particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:drift linear infinite}
+@keyframes drift{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.5}80%{opacity:.2}100%{opacity:0;transform:translateY(-110vh) scale(1.5)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-anim{animation:float 4s ease-in-out infinite}
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2.5 group">
+      <div class="w-8 h-8 border border-emerald-500 rounded-lg flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-300">
+        <span class="text-emerald-400 group-hover:text-gray-900 font-bold text-sm transition-colors" style="font-family:'Bricolage Grotesque',sans-serif">ISR</span>
+      </div>
+      <span class="font-bold text-white text-sm tracking-wide hidden sm:block" style="font-family:'Bricolage Grotesque',sans-serif">IYERE ISIUWA RUTH<span class="text-emerald-400">.</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Home</a>
+      <a href="#about" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">About</a>
+      <a href="#skills" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Skills</a>
+      <a href="#projects" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Projects</a>
+      <a href="#contact" class="nav-link text-sm text-gray-400 hover:text-white transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="Ruth-Resume.pdf" download="Iyere-Isiuwa-Ruth-Resume.pdf" class="shimmer hidden sm:flex items-center gap-2 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 hover:bg-emerald-500/10 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Resume
+      </a>
+      <button onclick="toggleMob()" id="ham-btn" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-white/5 transition-colors">
+        <span id="h1" class="block w-5 h-0.5 bg-gray-400 transition-all duration-300 origin-center"></span>
+        <span id="h2" class="block w-5 h-0.5 bg-gray-400 transition-all duration-300"></span>
+        <span id="h3" class="block w-3.5 h-0.5 bg-gray-400 transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mob-menu" style="background:rgba(6,6,9,0.97);backdrop-filter:blur(20px)" class="md:hidden">
+    <div class="px-4 pb-5 pt-2 flex flex-col gap-1 border-t border-white/5">
+      <a href="#home" onclick="toggleMob()" class="text-sm text-gray-400 hover:text-emerald-400 px-3 py-3 rounded-lg hover:bg-white/4 transition-colors">Home</a>
+      <a href="#about" onclick="toggleMob()" class="text-sm text-gray-400 hover:text-emerald-400 px-3 py-3 rounded-lg hover:bg-white/4 transition-colors">About</a>
+      <a href="#skills" onclick="toggleMob()" class="text-sm text-gray-400 hover:text-emerald-400 px-3 py-3 rounded-lg hover:bg-white/4 transition-colors">Skills</a>
+      <a href="#projects" onclick="toggleMob()" class="text-sm text-gray-400 hover:text-emerald-400 px-3 py-3 rounded-lg hover:bg-white/4 transition-colors">Projects</a>
+      <a href="#contact" onclick="toggleMob()" class="text-sm text-gray-400 hover:text-emerald-400 px-3 py-3 rounded-lg hover:bg-white/4 transition-colors">Contact</a>
+      <button onclick="generateResume();toggleMob()" class="mt-2 flex items-center justify-center gap-2 border border-emerald-500/40 text-emerald-400 text-sm font-semibold px-4 py-2.5 rounded-full transition-all">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Download Resume
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
+  <div id="particles"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% 55%,rgba(16,185,129,0.07) 0%,transparent 70%)"></div>
+  <div class="absolute top-20 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(52,211,153,0.07) 0%,transparent 70%);transform:translate(30%,-20%)"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
+    <div class="reveal inline-flex items-center gap-2.5 border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-xs font-semibold px-4 py-2 rounded-full mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" style="animation:blink .9s step-end infinite"></span>
+      Available for opportunities
+    </div>
+    <h1 class="reveal d1 font-black text-white leading-[1.05] tracking-tight mb-5" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.2rem,7.5vw,5.5rem)">
+      Hi, I'm <span class="text-em">IYERE ISIUWA RUTH</span>
+    </h1>
+    <div class="reveal d2 flex items-center justify-center gap-2 mb-7">
+      <span class="text-gray-400 text-base sm:text-xl font-medium">I build</span>
+      <span class="text-white text-base sm:text-xl font-semibold" id="tw-text"></span>
+      <span class="cursor"></span>
+    </div>
+    <p class="reveal d3 text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-10">
+      Cybersecurity student &amp; frontend developer passionate about building secure, beautiful digital experiences. Turning threats into solutions and ideas into interfaces.
+    </p>
+    <div class="reveal d4 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#projects" class="w-full sm:w-auto text-center bg-emerald-500 hover:bg-emerald-400 text-gray-900 font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 glow-sm hover:scale-105">View Projects →</a>
+      <a href="#contact" class="w-full sm:w-auto text-center border border-white/15 hover:border-emerald-500/40 text-gray-300 hover:text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-300">Get in touch</a>
+    </div>
+    <div class="reveal d5 mt-16 flex flex-col items-center gap-2 opacity-40">
+      <span class="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-emerald-500 to-transparent" style="animation:blink 2s ease-in-out infinite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="relative py-20 sm:py-28" style="background:#0d0d14">
+  <div class="divider absolute top-0 left-0 right-0"></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="reveal-l order-2 lg:order-1">
+        <div class="relative max-w-sm mx-auto lg:mx-0">
+          <div class="relative rounded-2xl overflow-hidden" style="box-shadow:0 0 60px rgba(16,185,129,0.12)">
+
+            <!-- ════════════════════════════════════════════════
+                 YOUR PROFILE PHOTO
+                 Put your photo file (e.g. RUTH.png) in the
+                 same folder as this HTML file, then set the
+                 src below to match your filename exactly.
+                 ════════════════════════════════════════════════ -->
+            <img src="RUTH.png" alt="Iyere Isiuwa Ruth" class="w-full h-80 sm:h-[420px] object-cover object-top"/>
+
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(6,6,9,.7) 0%,transparent 50%)"></div>
+            <div class="absolute bottom-5 left-5">
+              <p class="text-white font-bold text-lg" style="font-family:'Bricolage Grotesque',sans-serif">Iyere Isiuwa Ruth</p>
+              <p class="text-emerald-400 text-sm">Cybersecurity &amp; Web Developer</p>
+            </div>
+          </div>
+          <div class="float-anim absolute -top-4 -right-3 sm:-right-7 rounded-xl p-4 border border-white/10 shadow-2xl" style="background:#1a1a28">
+            <p class="text-xs text-gray-500 mb-1">Projects Built</p>
+            <p class="text-2xl font-black text-white" style="font-family:'Bricolage Grotesque',sans-serif">12<span class="text-em">+</span></p>
+          </div>
+          <div class="float-anim absolute -bottom-4 -left-3 sm:-left-7 rounded-xl p-4 border border-white/10 shadow-2xl" style="background:#1a1a28;animation-delay:.8s">
+            <p class="text-xs text-gray-500 mb-1">Years Learning</p>
+            <p class="text-2xl font-black text-white" style="font-family:'Bricolage Grotesque',sans-serif">2<span class="text-em">+</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <p class="reveal sec-label mb-4">About Me</p>
+        <h2 class="reveal d1 text-white font-black leading-tight mb-6" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,3.5vw,2.8rem)">
+          Security mindset.<br/><span class="text-em">Builder's heart.</span>
+        </h2>
+        <div class="space-y-4">
+          <p class="reveal d2 text-gray-400 text-sm sm:text-base leading-relaxed">I'm a cybersecurity enthusiast with a genuine obsession for both breaking and building things on the web. My journey started with wanting to understand how systems get compromised and quickly evolved into wanting to build systems so well-designed they're hard to compromise.</p>
+          <p class="reveal d3 text-gray-400 text-sm sm:text-base leading-relaxed">On the web side, I love crafting interfaces that feel intentional, where every animation and interaction serves a purpose. I believe the best products sit at the intersection of security and great UX.</p>
+          <p class="reveal d4 text-gray-400 text-sm sm:text-base leading-relaxed">My goal is to work where both worlds intersect, building secure web applications, developing security-focused tools, and working in penetration testing.</p>
+        </div>
+        <div class="reveal d5 flex flex-wrap gap-2 mt-8">
+          <span class="tag">Penetration Testing</span><span class="tag">Secure Web Apps</span><span class="tag">Security Tools</span><span class="tag">Frontend Developer</span>
+        </div>
+        <div class="reveal mt-7 flex flex-wrap items-center gap-5">
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Nigeria
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <span class="w-2 h-2 rounded-full bg-emerald-400" style="animation:blink .9s step-end infinite"></span>
+            Open to work
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="relative py-20 sm:py-28" style="background:#060609">
+  <div class="divider absolute top-0 left-0 right-0"></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 sm:mb-16">
+      <p class="reveal sec-label mb-4">Skills</p>
+      <h2 class="reveal d1 text-white font-black" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,3.5vw,2.8rem)">Tools &amp; <span class="text-em">Expertise</span></h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+      <div class="reveal-l">
+        <h3 class="text-white font-bold text-lg mb-8" style="font-family:'Bricolage Grotesque',sans-serif">Technical Skills</h3>
+        <div class="space-y-5" id="tech-skills"></div>
+      </div>
+      <div class="reveal-r">
+        <h3 class="text-white font-bold text-lg mb-8" style="font-family:'Bricolage Grotesque',sans-serif">Tools &amp; Soft Skills</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-10" id="tools-grid"></div>
+        <h4 class="text-gray-400 text-sm font-semibold mb-5 uppercase tracking-wider">Soft Skills</h4>
+        <div class="space-y-5" id="soft-skills"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="relative py-20 sm:py-28" style="background:#0d0d14">
+  <div class="divider absolute top-0 left-0 right-0"></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 sm:mb-16">
+      <p class="reveal sec-label mb-4">Projects</p>
+      <h2 class="reveal d1 text-white font-black" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,3.5vw,2.8rem)">Things I've <span class="text-em">Built</span></h2>
+    </div>
+    <div class="space-y-8" id="proj-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="relative py-20 sm:py-28" style="background:#060609">
+  <div class="divider absolute top-0 left-0 right-0"></div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <p class="reveal sec-label mb-4">Contact</p>
+      <h2 class="reveal d1 text-white font-black" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,3.5vw,2.8rem)">Let's <span class="text-em">Connect</span></h2>
+      <p class="reveal d2 text-gray-500 text-sm sm:text-base max-w-md mx-auto mt-3">Whether it's a project, opportunity, or just a hello — I'm always happy to talk.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+      <div class="reveal-l space-y-4">
+        <a href="mailto:ruthiyere837@gmail.com" class="flex items-center gap-4 p-4 rounded-xl border border-white/8 hover:border-emerald-500/35 hover:bg-emerald-500/5 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs text-gray-500 mb-0.5 uppercase tracking-wider">Email</p>
+            <p class="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors truncate">ruthiyere837@gmail.com</p>
+          </div>
+          <svg class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 ml-auto flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/isiuwa-iyere-b04928358" target="_blank" class="flex items-center gap-4 p-4 rounded-xl border border-white/8 hover:border-emerald-500/35 hover:bg-emerald-500/5 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+            <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs text-gray-500 mb-0.5 uppercase tracking-wider">LinkedIn</p>
+            <p class="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors truncate">linkedin.com/in/isiuwa-iyere-b04928358</p>
+          </div>
+          <svg class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 ml-auto flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="https://github.com/Ruth-Isi02" target="_blank" class="flex items-center gap-4 p-4 rounded-xl border border-white/8 hover:border-emerald-500/35 hover:bg-emerald-500/5 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+            <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs text-gray-500 mb-0.5 uppercase tracking-wider">GitHub</p>
+            <p class="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors truncate">github.com/Ruth-Isi02</p>
+          </div>
+          <svg class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 ml-auto flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="Ruth-Resume.pdf" download="Iyere-Isiuwa-Ruth-Resume.pdf" class="shimmer hidden sm:flex items-center gap-2 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 hover:bg-emerald-500/10 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Resume
+      </a>
+      </div>
+      <div class="reveal-r">
+        <form onsubmit="sendMsg(event)" class="space-y-4">
+          <div>
+            <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Name</label>
+            <input type="text" class="cinput" placeholder="Your name" required/>
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Email</label>
+            <input type="email" class="cinput" placeholder="your@email.com" required/>
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Message</label>
+            <textarea class="cinput" rows="5" placeholder="Tell me about your project or opportunity…" required></textarea>
+          </div>
+          <button type="submit" id="send-btn" class="w-full bg-emerald-500 hover:bg-emerald-400 text-gray-900 font-bold text-sm py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02] glow-sm">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a0a10;border-top:1px solid rgba(255,255,255,0.05)" class="py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 border border-emerald-500/50 rounded flex items-center justify-center">
+        <span class="text-emerald-400 font-bold text-xs" style="font-family:'Bricolage Grotesque',sans-serif">ISR</span>
+      </div>
+      <span class="text-gray-500 text-sm">© 2026 Iyere Isiuwa Ruth. All rights reserved.</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="mailto:ruthiyere837@gmail.com" class="text-gray-600 hover:text-emerald-400 transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
+      <a href="https://linkedin.com/in/isiuwa-iyere-b04928358" target="_blank" class="text-gray-600 hover:text-emerald-400 transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://github.com/Ruth-Isi02" target="_blank" class="text-gray-600 hover:text-emerald-400 transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>40){nav.style.cssText='background:rgba(6,6,9,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)'}
+  else{nav.style.cssText='background:transparent'}
+});
+
+// Mobile menu
+let mo=false;
+function toggleMob(){
+  mo=!mo;
+  document.getElementById('mob-menu').classList.toggle('open',mo);
+  const h1=document.getElementById('h1'),h2=document.getElementById('h2'),h3=document.getElementById('h3');
+  if(mo){h1.style.transform='rotate(45deg) translate(3px,3px)';h3.style.transform='rotate(-45deg) translate(3px,-3px)';h2.style.opacity='0'}
+  else{[h1,h2,h3].forEach(h=>{h.style.transform='';h.style.opacity='1'})}
+}
+
+// Typewriter
+const phrases=['secure systems.','beautiful UIs.','web applications.','cybersecurity tools.','great experiences.'];
+let pi=0,ci=0,del=false;
+function tw(){
+  const el=document.getElementById('tw-text'),p=phrases[pi];
+  if(!del){el.textContent=p.slice(0,++ci);if(ci===p.length){setTimeout(()=>{del=true;tw()},2000);return}}
+  else{el.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}
+  setTimeout(tw,del?50:90);
+}
+tw();
+
+// Particles
+const pc=document.getElementById('particles');
+for(let i=0;i<25;i++){
+  const p=document.createElement('div');p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;width:${1+Math.random()*2.5}px;height:${1+Math.random()*2.5}px;background:#34d399;animation-duration:${9+Math.random()*14}s;animation-delay:${Math.random()*12}s`;
+  pc.appendChild(p);
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+function observe(){document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el))}
+observe();
+
+// Skills data
+const techSkills=[
+  {n:'HTML / CSS',p:92},{n:'JavaScript',p:82},{n:'Tailwind CSS',p:88},
+  {n:'Python',p:80},{n:'Network Security',p:74},{n:'Linux / Bash',p:70},
+  {n:'React (Learning)',p:55},{n:'Penetration Testing',p:62},{n:'Web Security',p:75},{n:'Vulnerability Management',p:65}
+];
+const softSkills=[{n:'Problem Solving',p:90},{n:'Communication',p:85},{n:'Critical Thinking',p:88},{n:'Attention to Detail',p:92},{n:'Awareness Training',p:85}];
+const tools=['VS Code','Git / GitHub','Burp Suite','Wireshark','Kali Linux','Netcat','Metasploit','Canva','Tailwind CSS','Node.js','Nmap'];
+
+const te=document.getElementById('tech-skills');
+techSkills.forEach((s,i)=>{te.innerHTML+=`<div class="reveal" style="transition-delay:${i*.07}s"><div class="flex justify-between text-xs mb-2"><span class="text-gray-300 font-medium">${s.n}</span><span class="text-emerald-400 font-semibold">${s.p}%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-p="${s.p}"></div></div></div>`});
+const se=document.getElementById('soft-skills');
+softSkills.forEach((s,i)=>{se.innerHTML+=`<div class="reveal" style="transition-delay:${i*.1}s"><div class="flex justify-between text-xs mb-2"><span class="text-gray-300 font-medium">${s.n}</span><span class="text-emerald-400 font-semibold">${s.p}%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-p="${s.p}"></div></div></div>`});
+const tg=document.getElementById('tools-grid');
+tools.forEach(t=>{tg.innerHTML+=`<div class="reveal flex items-center gap-2 px-3 py-2.5 rounded-lg border border-white/8 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 cursor-default group"><div class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></div><span class="text-xs text-gray-400 group-hover:text-gray-200 transition-colors">${t}</span></div>`});
+
+// Animate bars on intersection
+const barObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skill-bar-fill').forEach(b=>setTimeout(()=>{b.style.width=b.dataset.p+'%'},200))}),{threshold:.2});
+[te,se].forEach(el=>barObs.observe(el));
+
+// ════════════════════════════════════════════════════════════════
+//  PROJECTS — edit this list to update your projects
+//
+//  For each project, set:
+//    img1 / img2 : filename of your screenshot (e.g. 'behave1.png')
+//                  OR a full https:// URL
+//                  Set to null to show an empty placeholder
+//    gh          : your GitHub repo URL
+//    live        : your live/deployed website URL
+// ════════════════════════════════════════════════════════════════
+const projects=[
+  {
+    title:'BehaveScan',
+    sub:'Behavioral Identity Intelligence',
+    desc:'Real-time bot detection using mouse trajectory, keystroke dynamics, and click pattern analysis. Features a live heatmap and human probability scoring with zero CAPTCHA friction.',
+    tags:['JavaScript','Tailwind CSS','Canvas API','Biometrics'],
+    img1:'Behav1.png',           // ← screenshot 1: put Behave1.png next to this HTML file
+    img2:'Behave2.png',           // ← screenshot 2: put Behave2.png next to this HTML file
+    gh:'https://github.com/Ruth-Isi02',           // ← paste your BehaveScan GitHub repo URL here
+    live:'https://ruth-isi02.github.io/Behaviour-Scanner/',                     // ← paste your BehaveScan live link here (GitHub Pages URL)
+    featured:true
+  },
+  {
+    title:'Portfolio Website',
+    sub:'Personal Brand & Showcase',
+    desc:'This portfolio — built mobile-first with Tailwind CSS. Features smooth scroll animations, typewriter effects, skill bar animations, and a PDF resume generator.',
+    tags:['HTML','Tailwind CSS','JavaScript','Responsive'],
+    img1:'Portfolio1.png',        // ← screenshot 1: put Portfolio1.png next to this HTML file
+    img2:'Portfolio2.png',        // ← screenshot 2: put Portfolio2.png next to this HTML file
+    gh:'https://github.com/Ruth-Isi02',           // ← paste your Portfolio GitHub repo URL here
+    live:'#',                     // ← paste your Portfolio live link here
+    featured:false
+  },
+  {
+    title:'Your Next Project',
+    sub:'Coming Soon',
+    desc:'Replace this card with your next build. Update the title, description, tags, and links above in the projects array.',
+    tags:['Coming Soon'],
+    img1:null,
+    img2:null,
+    gh:'https://github.com/Ruth-Isi02',
+    live:'#',
+    featured:false
+  },
+  {
+    title:'Your Next Project',
+    sub:'Coming Soon',
+    desc:'Replace this card with your next build. Update the title, description, tags, and links above in the projects array.',
+    tags:['Coming Soon'],
+    img1:null,
+    img2:null,
+    gh:'https://github.com/Ruth-Isi02',
+    live:'#',
+    featured:false
+  }
+];
+
+// ── render projects (no click-to-change, static only) ──
+const pg=document.getElementById('proj-grid');
+projects.forEach((p,i)=>{
+  const flip=i%2!==0;
+  const slot=url=>url
+    ? `<img src="${url}" alt="${p.title} screenshot" class="w-full h-full object-cover"/>`
+    : `<div class="w-full h-full flex flex-col items-center justify-center gap-2 opacity-35">
+         <svg class="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+         </svg>
+         <span class="text-xs text-emerald-400">Screenshot coming soon</span>
+       </div>`;
+  const tags=p.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  pg.innerHTML+=`
+  <div class="pcard reveal border border-white/8 rounded-2xl overflow-hidden${p.featured?' border-emerald-500/20':''}" style="background:#12121c;transition-delay:${i*.1}s">
+    ${p.featured?'<div class="px-5 pt-4"><span class="tag text-[10px]">⭐ Featured</span></div>':''}
+    <div class="grid sm:grid-cols-2">
+      <div class="flex flex-col gap-px ${flip?'sm:order-2':'sm:order-1'}">
+        <div class="img-slot h-48 sm:h-56">${slot(p.img1)}</div>
+        <div class="img-slot h-48 sm:h-56">${slot(p.img2)}</div>
+      </div>
+      <div class="p-6 sm:p-8 flex flex-col justify-between ${flip?'sm:order-1':'sm:order-2'}">
+        <div>
+          <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wider mb-2">${p.sub}</p>
+          <h3 class="text-white font-black text-xl sm:text-2xl mb-4" style="font-family:'Bricolage Grotesque',sans-serif">${p.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">${p.desc}</p>
+          <div class="flex flex-wrap gap-2 mb-6">${tags}</div>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="${p.gh}" target="_blank" class="flex items-center gap-2 border border-white/15 hover:border-emerald-500/40 text-gray-400 hover:text-emerald-400 text-xs font-semibold px-4 py-2.5 rounded-full transition-all duration-300">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="${p.live}" target="_blank" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-gray-900 font-bold text-xs px-4 py-2.5 rounded-full transition-all duration-300">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+});
+setTimeout(observe,50);
+
+// Contact form
+function sendMsg(e){e.preventDefault();const b=document.getElementById('send-btn');b.textContent='Sent ✓';b.style.background='#059669';b.disabled=true;setTimeout(()=>{b.textContent='Send Message →';b.style.background='';b.disabled=false;e.target.reset()},3000)}
+
+// Resume generator
+function generateResume(){
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Resume — Iyere Isiuwa Ruth</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Georgia,serif;background:#fff;color:#111;padding:40px 48px;max-width:820px;margin:0 auto;font-size:13px;line-height:1.6}h1{font-size:28px;font-weight:700;margin-bottom:4px}.sub{color:#059669;font-size:14px;font-weight:600;margin-bottom:14px}.cr{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#555;border-bottom:2px solid #111;padding-bottom:14px;margin-bottom:20px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#059669;margin:18px 0 8px;border-bottom:1px solid #e5e7eb;padding-bottom:5px}.exp{margin-bottom:12px}.eh{display:flex;justify-content:space-between}.et{font-weight:700}.ed{font-size:11px;color:#888}.es{font-size:12px;color:#555;margin-bottom:4px}ul{padding-left:16px}li{margin-bottom:2px;font-size:12px;color:#333}.sg{display:grid;grid-template-columns:1fr 1fr;gap:6px}.si{font-size:12px;color:#333;padding:3px 0;border-bottom:1px solid #f3f4f6}@media print{body{padding:20px 28px}}</style></head><body>
+<h1>Iyere Isiuwa Ruth</h1><div class="sub">Cybersecurity Student &amp; Frontend Developer</div>
+<div class="cr"><span>📧 ruthiyere837@gmail.com</span><span>💼 linkedin.com/in/isiuwa-iyere-b04928358</span><span>🐙 github.com/Ruth-Isi02</span><span>📍 Nigeria</span></div>
+<h2>Summary</h2><p style="font-size:12px;color:#444;line-height:1.7">Cybersecurity student and frontend developer with hands-on experience building secure, user-focused web applications. Skilled in behavioral analysis systems, UI development with Tailwind CSS, and network security fundamentals. Passionate about bridging the gap between strong security practices and excellent user experience.</p>
+<h2>Education</h2><div class="exp"><div class="eh"><span class="et">B.Sc. Cybersecurity / Computer Science</span><span class="ed">2022 – Present</span></div><div class="es">Your University · Nigeria</div></div>
+<h2>Projects</h2>
+<div class="exp"><div class="eh"><span class="et">BehaveScan — Behavioral Identity Intelligence</span><span class="ed">2024</span></div><div class="es">JavaScript, Canvas API, Tailwind CSS</div><ul><li>Built real-time bot detection using mouse trajectory, keystroke dynamics, and click pattern analysis</li><li>Implemented live heatmap with HTML5 Canvas and weighted human probability scoring</li><li>Designed fully responsive SaaS-style UI with zero CAPTCHA friction</li></ul></div>
+<div class="exp"><div class="eh"><span class="et">Portfolio Website</span><span class="ed">2025</span></div><div class="es">HTML, Tailwind CSS, JavaScript</div><ul><li>Built mobile-first personal portfolio with scroll animations and typewriter effects</li><li>Implemented skill bars, particle system, and PDF resume generation</li></ul></div>
+<h2>Technical Skills</h2><div class="sg"><div class="si">HTML / CSS — Advanced</div><div class="si">JavaScript — Advanced</div><div class="si">Tailwind CSS — Advanced</div><div class="si">Python — Intermediate</div><div class="si">Linux / Bash — Intermediate</div><div class="si">Network Security — Intermediate</div><div class="si">Penetration Testing — Intermediate</div><div class="si">Web Security — Intermediate</div><div class="si">Burp Suite — Intermediate</div><div class="si">Wireshark — Intermediate</div></div>
+<h2>Soft Skills &amp; Interests</h2><ul><li>Problem Solving, Critical Thinking, Attention to Detail, Communication, Awareness Training</li><li>CTF Competitions, OWASP Top 10, Web Application Security Research</li></ul>
+<div style="margin-top:28px;text-align:center"><button onclick="window.print()" style="background:#059669;color:#fff;border:none;padding:10px 28px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer">🖨 Print / Save as PDF</button></div>
+</body></html>`);w.document.close();
+}
+</script>
+</body>
+</html>
