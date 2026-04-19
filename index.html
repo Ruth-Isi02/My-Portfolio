@@ -275,7 +275,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
       </a>
       </div>
       <div class="reveal-r">
-        <form action="https://formspree.io/f/xqewlagk" method="POST" class="space-y-4">
+        <form id="contact-form" action="https://formspree.io/f/xqewlagk" method="POST" class="space-y-4">
           <div>
             <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Name</label>
             <input type="text" class="cinput" placeholder="Your name" required/>
@@ -474,6 +474,55 @@ projects.forEach((p,i)=>{
   </div>`;
 });
 setTimeout(observe,50);
+
+//Contact form
+const contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('send-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(contactForm);
+
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      // Show success message
+      contactForm.innerHTML = `
+        <div style="text-align:center;padding:40px 20px">
+          <div style="width:56px;height:56px;background:rgba(52,211,153,0.1);border:1.5px solid #34d399;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 style="color:#ffffff;font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:8px">Message Sent!</h3>
+          <p style="color:#9ca3af;font-size:0.875rem;line-height:1.6">Thanks for reaching out. I'll get back to you as soon as possible.</p>
+        </div>`;
+    } else {
+      btn.textContent = 'Something went wrong — try again';
+      btn.style.background = '#ef4444';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+      }, 3000);
+    }
+  } catch (err) {
+    btn.textContent = 'Network error — try again';
+    btn.style.background = '#ef4444';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+});
 
 // Resume generator
 function generateResume(){
